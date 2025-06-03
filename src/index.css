@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.navbar {
+  background-color: #059669;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.list {
+  padding-left: 1.5rem;
+}
+
+.list.number {
+  list-style-type: decimal;
+}
+
+.package-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.package-table th,
+.package-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+.feature-box {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border-left: 5px solid #10b981;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.feature-box:hover {
+  background-color: #ecfdf5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #047857;
+}
+
+.feature-steps {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.feature-step {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  color: #374151;
+}
+
+.step-number {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  color: #10b981;
+}
