@@ -1,20 +1,18 @@
-import React from 'react';
+// src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
+import '../App.css';
 
-function Navbar() {
-  return (
-    <nav className="navbar">
-      <h1 className="logo">ASHPAY</h1>
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/packages">Packages</Link>
-        <Link to="/how-it-works">How it Works</Link>
-        <Link to="/legal">Legal</Link>
-         <Link to="/features">Features</Link>
-        <Link to="/contact">Contact</Link>
-      </div>
-    </nav>
-  );
-}
+const Navbar = () => (
+  <nav className="navbar">
+    <h1>AshPay</h1>
+    <ul>
+      <li><Link to="/">Register</Link></li>
+      <li><Link to="/subscribe">Subscribe</Link></li>
+      <li><Link to="/send">Send</Link></li>
+      <li><Link to="/balance">Balance</Link></li>
+      <li><Link to="/settings">Settings</Link></li>
+    </ul>
+  </nav>
+);
 
 export default Navbar;
