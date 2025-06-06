@@ -41,7 +41,15 @@ const Home = () => {
       </section>
 
       <footer className="footer-banner">
-        <p>{t.footerText || "© 2025 Ashpay. All rights reserved."}</p>
+        <p>{t.footerText || "© 2024 Ashpay. All rights reserved."}</p>
+  
+  <a href="mailto:mushila@studios@gmail.com">
+    {t.footerContactEmail || "Email: mushila@studios@gmail.com"}
+  </a>
+  <br></br>
+  <a href="tel:+254743934258">
+    {t.footerContactPhone || "Contact: +254 743 934 258"}
+  </a>
       </footer>
     </section>
   );
