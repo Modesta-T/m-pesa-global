@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../App.css"; // Make sure this import is present
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ function Register() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (files) {
+    if (files && files.length > 0) {
       setFormData((prevData) => ({
         ...prevData,
         [name]: files[0],
@@ -27,7 +28,13 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.fullName || !formData.phone || !formData.email || !formData.passport || !formData.visa) {
+    if (
+      !formData.fullName ||
+      !formData.phone ||
+      !formData.email ||
+      !formData.passport ||
+      !formData.visa
+    ) {
       alert("Please fill in all fields and upload required documents.");
       return;
     }
@@ -40,11 +47,25 @@ function Register() {
     payload.append("visa", formData.visa);
 
     try {
-      // Simulate API call for now
-      // Replace URL with your real backend endpoint later
-     await new Promise((r) => setTimeout(r, 1000));
-alert("Simulated registration success!");
+      // Simulate API call
+      await new Promise((r) => setTimeout(r, 1000));
+      alert("Simulated registration success!");
 
+      // Reset form
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        passport: null,
+        visa: null,
+      });
+
+      // If using real API, remove above and uncomment below:
+      /*
+      const response = await fetch("YOUR_BACKEND_ENDPOINT", {
+        method: "POST",
+        body: payload,
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -54,32 +75,23 @@ alert("Simulated registration success!");
 
       const result = await response.json();
       alert("Registration successful! Welcome, " + result.fullName);
-
-      // Reset form if needed
-      setFormData({
-        fullName: "",
-        phone: "",
-        email: "",
-        passport: null,
-        visa: null,
-      });
-
+      */
     } catch (error) {
       alert("An error occurred: " + error.message);
     }
   };
 
   return (
-    <section className="p-8 max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">User Registration</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <section className="subscription-container">
+      <h2 className="subscription-title text-center">User Registration</h2>
+      <form onSubmit={handleSubmit} className="send-form">
         <input
           type="text"
           name="fullName"
           placeholder="Full Name"
           value={formData.fullName}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="input-field"
         />
         <input
           type="tel"
@@ -87,7 +99,7 @@ alert("Simulated registration success!");
           placeholder="Phone Number"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="input-field"
         />
         <input
           type="email"
@@ -95,32 +107,33 @@ alert("Simulated registration success!");
           placeholder="Email Address"
           value={formData.email}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="input-field"
         />
-        <label className="block">
-          Upload Passport:
-          <input
-            type="file"
-            name="passport"
-            accept="image/*,.pdf"
-            onChange={handleChange}
-            className="mt-1"
-          />
-        </label>
-        <label className="block">
-          Upload Visa:
-          <input
-            type="file"
-            name="visa"
-            accept="image/*,.pdf"
-            onChange={handleChange}
-            className="mt-1"
-          />
-        </label>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-        >
+        <div>
+          <label>
+            Upload Passport:
+            <input
+              type="file"
+              name="passport"
+              accept="image/*,.pdf"
+              onChange={handleChange}
+              className="input-field mt-2"
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Upload Visa:
+            <input
+              type="file"
+              name="visa"
+              accept="image/*,.pdf"
+              onChange={handleChange}
+              className="input-field mt-2"
+            />
+          </label>
+        </div>
+        <button type="submit" className="btn-primary">
           Register
         </button>
       </form>

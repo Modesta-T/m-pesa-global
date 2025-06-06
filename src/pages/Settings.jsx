@@ -2,33 +2,52 @@ import React, { useContext, useState } from "react";
 import { LanguageContext } from "../LanguageContext";
 
 const Settings = () => {
-  const { language, setLanguage, t } = useContext(LanguageContext);
+  const { language, setLanguage, translations } = useContext(LanguageContext);
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleTheme = () => {
-    setDarkMode((prev) => !prev);
-    document.body.className = darkMode ? "light" : "dark";
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    document.body.className = newMode ? "dark" : "light";
   };
 
   return (
-    <div className="settings-page">
-      <h2>{t("settings")}</h2>
+    <section className="subscription-container">
+      <h2 className="subscription-title text-center">{translations.settings}</h2>
 
-      <div className="setting-option">
-        <label>{t("language")}: </label>
-        <select onChange={(e) => setLanguage(e.target.value)} value={language}>
-          <option>English</option>
-          <option>French</option>
-        </select>
+      <div className="send-form">
+        <div className="setting-option">
+          <label className="label-block">{translations.language}:</label>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="input-field"
+          >
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="zh">Chinese</option>
+            <option value="ko">Korean</option>
+            <option value="es">Spanish</option>
+            <option value="ar">Arabic</option>
+            <option value="hi">Hindi</option>
+            <option value="de">German</option>
+            <option value="pt">Portuguese</option>
+          </select>
+        </div>
+
+        <div className="setting-option mt-4">
+          <label className="label-block">{translations.dark_mode}:</label>
+          <input
+            type="checkbox"
+            checked={darkMode}
+            onChange={toggleTheme}
+            className="input-field"
+          />
+        </div>
+
+        <button className="btn-primary mt-6">{translations.logout}</button>
       </div>
-
-      <div className="setting-option">
-        <label>{t("dark_mode")}: </label>
-        <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
-      </div>
-
-      <button>{t("logout")}</button>
-    </div>
+    </section>
   );
 };
 
