@@ -1,27 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { LanguageContext } from "../LanguageContext";
 
 function Subscription() {
+  const { translations } = useContext(LanguageContext);
+
   const [selectedPlan, setSelectedPlan] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
   const plans = [
-    { id: "monthly", name: "Monthly Plan", price: 1000 },
-    { id: "quarterly", name: "Quarterly Plan", price: 2700 },
-    { id: "yearly", name: "Yearly Plan", price: 10000 },
+    { id: "monthly", nameKey: "subscriptionMonthly", price: 1000 },
+    { id: "quarterly", nameKey: "subscriptionQuarterly", price: 2700 },
+    { id: "yearly", nameKey: "subscriptionYearly", price: 10000 },
   ];
 
   const handleSubscribe = () => {
     if (!selectedPlan) {
-      alert("Please select a plan to subscribe.");
+      alert(translations.alertSelectPlan);
       return;
     }
     setSubscribed(true);
-    alert(`Subscribed to ${selectedPlan} successfully!`);
+    // Use the selectedPlan key to get translated plan name
+    const planName = plans.find((p) => p.id === selectedPlan)?.nameKey;
+    alert(
+      translations.alertSuccessSubscribe.replace(
+        "{{plan}}",
+        translations[planName] || selectedPlan
+      )
+    );
   };
 
   return (
     <section className="subscription-container">
-      <h2 className="subscription-title">Choose a Subscription Plan</h2>
+      <h2 className="subscription-title">{translations.subscriptionTitle}</h2>
       <div className="plans-list">
         {plans.map((plan) => (
           <label key={plan.id} className="plan-item">
@@ -29,24 +39,31 @@ function Subscription() {
               <input
                 type="radio"
                 name="plan"
-                value={plan.name}
-                onChange={() => setSelectedPlan(plan.name)}
-                checked={selectedPlan === plan.name}
+                value={plan.id}
+                onChange={() => setSelectedPlan(plan.id)}
+                checked={selectedPlan === plan.id}
               />
-              <span className="plan-name">{plan.name}</span>
+              <span className="plan-name">{translations[plan.nameKey]}</span>
             </div>
-            <div className="plan-price">{plan.price} KES</div>
+            <div className="plan-price">
+              {plan.price} {translations.subscriptionPriceSuffix}
+            </div>
           </label>
         ))}
       </div>
 
       <button onClick={handleSubscribe} className="subscribe-button">
-        Subscribe
+        {translations.subscribeButton}
       </button>
 
       {subscribed && (
         <p className="subscription-success">
-          Thank you for subscribing to the {selectedPlan}!
+          {translations.alertSuccessSubscribe.replace(
+            "{{plan}}",
+            translations[
+              plans.find((p) => p.id === selectedPlan)?.nameKey
+            ] || selectedPlan
+          )}
         </p>
       )}
     </section>

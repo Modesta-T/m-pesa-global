@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { LanguageContext } from "../LanguageContext";
 
 function SendReceive() {
-  const [method, setMethod] = useState("sendmoney");
+  const { translations } = useContext(LanguageContext);
 
+  const [method, setMethod] = useState("sendmoney");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -12,7 +14,6 @@ function SendReceive() {
     wallet: "",
     amount: "",
   });
-
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -25,48 +26,50 @@ function SendReceive() {
     switch (method) {
       case "sendmoney":
         if (!formData.name || !formData.phone || !formData.amount) {
-          setMessage("Please fill in all Send Money fields.");
+          setMessage(translations.fillSendFields);
           return;
         }
-        setMessage(`Successfully sent KES ${formData.amount} to ${formData.name}.`);
+        setMessage(
+          `${translations.successSent} KES ${formData.amount} ${translations.to} ${formData.name}.`
+        );
         break;
 
       case "paybill":
         if (!formData.businessNumber || !formData.accountNumber || !formData.amount) {
-          setMessage("Please fill in all Pay Bill fields.");
+          setMessage(translations.fillPayBillFields);
           return;
         }
         setMessage(
-          `Successfully paid KES ${formData.amount} to Pay Bill ${formData.businessNumber}, Account: ${formData.accountNumber}.`
+          `${translations.successPayBill} KES ${formData.amount} ${translations.to} ${translations.payBill} ${formData.businessNumber}, ${translations.account}: ${formData.accountNumber}.`
         );
         break;
 
       case "till":
         if (!formData.tillNumber || !formData.amount) {
-          setMessage("Please fill in all Till Number fields.");
+          setMessage(translations.fillTillFields);
           return;
         }
         setMessage(
-          `Successfully paid KES ${formData.amount} to Till Number ${formData.tillNumber}.`
+          `${translations.successTill} KES ${formData.amount} ${translations.to} ${translations.tillNumber} ${formData.tillNumber}.`
         );
         break;
 
       case "pochi":
         if (!formData.wallet || !formData.amount) {
-          setMessage("Please fill in all Pochi La Biashara fields.");
+          setMessage(translations.fillPochiFields);
           return;
         }
         setMessage(
-          `Successfully added KES ${formData.amount} to wallet: ${formData.wallet}.`
+          `${translations.successPochi} KES ${formData.amount} ${translations.to} ${translations.wallet}: ${formData.wallet}.`
         );
         break;
 
       default:
-        setMessage("Unknown payment method.");
+        setMessage(translations.unknownMethod);
         return;
     }
 
-    // Clear all form fields after successful submission
+    // Clear form
     setFormData({
       name: "",
       phone: "",
@@ -80,7 +83,7 @@ function SendReceive() {
 
   return (
     <div className="send-container">
-      <h2>Send Money</h2>
+      <h2>{translations.sendMoney}</h2>
 
       <div className="method-selector">
         <button
@@ -91,7 +94,7 @@ function SendReceive() {
           }}
           type="button"
         >
-          Send Money
+          {translations.sendMoney}
         </button>
         <button
           className={method === "paybill" ? "active" : ""}
@@ -101,7 +104,7 @@ function SendReceive() {
           }}
           type="button"
         >
-          Pay Bill
+          {translations.payBill}
         </button>
         <button
           className={method === "till" ? "active" : ""}
@@ -111,7 +114,7 @@ function SendReceive() {
           }}
           type="button"
         >
-          Till Number
+          {translations.tillNumber}
         </button>
         <button
           className={method === "pochi" ? "active" : ""}
@@ -121,7 +124,7 @@ function SendReceive() {
           }}
           type="button"
         >
-          Pochi La Biashara
+          {translations.pochi}
         </button>
       </div>
 
@@ -131,14 +134,14 @@ function SendReceive() {
             <input
               type="text"
               name="name"
-              placeholder="Recipient Name"
+              placeholder={translations.recipientName}
               value={formData.name}
               onChange={handleChange}
             />
             <input
               type="tel"
               name="phone"
-              placeholder="Phone Number"
+              placeholder={translations.phoneNumber}
               value={formData.phone}
               onChange={handleChange}
             />
@@ -150,14 +153,14 @@ function SendReceive() {
             <input
               type="text"
               name="businessNumber"
-              placeholder="Business Number"
+              placeholder={translations.businessNumber}
               value={formData.businessNumber}
               onChange={handleChange}
             />
             <input
               type="text"
               name="accountNumber"
-              placeholder="Account Number"
+              placeholder={translations.accountNumber}
               value={formData.accountNumber}
               onChange={handleChange}
             />
@@ -168,7 +171,7 @@ function SendReceive() {
           <input
             type="text"
             name="tillNumber"
-            placeholder="Till Number"
+            placeholder={translations.tillNumber}
             value={formData.tillNumber}
             onChange={handleChange}
           />
@@ -178,7 +181,7 @@ function SendReceive() {
           <input
             type="text"
             name="wallet"
-            placeholder="Wallet Name/ID"
+            placeholder={translations.walletPlaceholder}
             value={formData.wallet}
             onChange={handleChange}
           />
@@ -187,14 +190,13 @@ function SendReceive() {
         <input
           type="number"
           name="amount"
-          placeholder="Amount (KES)"
+          placeholder={translations.amount}
           value={formData.amount}
           onChange={handleChange}
           min="1"
-          step="any"
         />
 
-        <button type="submit">Send</button>
+        <button type="submit">{translations.send}</button>
       </form>
 
       {message && <p className="send-message">{message}</p>}

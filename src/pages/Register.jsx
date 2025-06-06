@@ -5,7 +5,6 @@ import "../App.css";
 function Register() {
   const { translations } = useContext(LanguageContext);
 
-  // State to hold form data
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -14,7 +13,6 @@ function Register() {
     visa: null,
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData((prevData) => ({
@@ -23,25 +21,24 @@ function Register() {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    alert("Registration submitted!");
-    // You can later post this data to your backend.
+    alert(translations.alertSuccess || "Registration submitted!");
+    // Submit data to backend later
   };
 
   return (
     <section className="subscription-container">
       <h2 className="subscription-title text-center">
-        {translations.register?.title || "Register"}
+        {translations.title || "Register"}
       </h2>
 
       <form onSubmit={handleSubmit} className="send-form">
         <input
           type="text"
           name="fullName"
-          placeholder={translations.register?.fullName || "Full Name"}
+          placeholder={translations.fullName || "Full Name"}
           value={formData.fullName}
           onChange={handleChange}
           className="input-field"
@@ -50,7 +47,7 @@ function Register() {
         <input
           type="tel"
           name="phone"
-          placeholder={translations.register?.phone || "Phone Number"}
+          placeholder={translations.phone || "Phone Number"}
           value={formData.phone}
           onChange={handleChange}
           className="input-field"
@@ -59,7 +56,7 @@ function Register() {
         <input
           type="email"
           name="email"
-          placeholder={translations.register?.email || "Email"}
+          placeholder={translations.email || "Email"}
           value={formData.email}
           onChange={handleChange}
           className="input-field"
@@ -67,7 +64,7 @@ function Register() {
         />
         <div>
           <label>
-            {translations.register?.passportLabel || "Passport"}
+            {translations.passportLabel || "Passport"}
             <input
               type="file"
               name="passport"
@@ -80,7 +77,7 @@ function Register() {
         </div>
         <div>
           <label>
-            {translations.register?.visaLabel || "Visa"}
+            {translations.visaLabel || "Visa"}
             <input
               type="file"
               name="visa"
@@ -92,7 +89,7 @@ function Register() {
           </label>
         </div>
         <button type="submit" className="btn-primary">
-          {translations.register?.submit || "Submit"}
+          {translations.submit || "Submit"}
         </button>
       </form>
     </section>

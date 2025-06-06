@@ -1,19 +1,25 @@
-// src/components/Navbar.jsx
-import { Link } from 'react-router-dom';
-import '../App.css';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { LanguageContext } from "../LanguageContext";
 
-const Navbar = () => (
-  <nav className="navbar">
-    <h1>AshPay</h1>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/register">Register</Link></li>
-      <li><Link to="/subscribe">Subscribe</Link></li>
-      <li><Link to="/send">Payment</Link></li>
-      <li><Link to="/balance">Balance</Link></li>
-      <li><Link to="/settings">Settings</Link></li>
-    </ul>
-  </nav>
-);
+
+const Navbar = () => {
+  const { translations } = useContext(LanguageContext);
+
+  return (
+    <nav className="navbar">
+      <h1>{translations.appName}</h1>
+      <ul>
+        <li><Link to="/">{translations.home}</Link></li>
+        <li><Link to="/admin">{translations.admin}</Link></li>
+        <li><Link to="/register">{translations.register}</Link></li>
+        <li><Link to="/subscribe">{translations.subscribe}</Link></li>
+        <li><Link to="/send">{translations.payment}</Link></li>
+        <li><Link to="/balance">{translations.balance}</Link></li>
+        <li><Link to="/settings">{translations.settings}</Link></li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;
