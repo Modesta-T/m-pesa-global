@@ -3,5 +3,27 @@
   "selectLanguage": "Selecionar idioma",
   "toggleTheme": "Alternar tema",
   "switchToDark": "Mudar para o modo escuro",
-  "switchToLight": "Mudar para o modo claro"
+  "switchToLight": "Mudar para o modo claro",
+
+  "welcomeTitle": "Bem-vindo ao AshPay",
+  "welcomeDescription": "Seu serviço virtual de SIM M-Pesa para estrangeiros que visitam o Quênia.",
+  "getStarted": "Começar",
+  "registrationTitle": "🔐 Registro",
+  "registrationDesc": "Inscreva-se usando seu passaporte e tenha acesso instantâneo aos serviços M-Pesa.",
+  "subscriptionTitle": "💳 Assinatura",
+  "subscriptionDesc": "Escolha um plano adequado para turistas e viajantes a negócios.",
+  "sendReceiveTitle": "📩 Enviar e Receber",
+  "sendReceiveDesc": "Envie e receba dinheiro através das fronteiras com segurança e rapidez.",
+  "balanceTitle": "💰 Saldo",
+  "balanceDesc": "Verifique seu saldo da carteira a qualquer momento com atualizações em tempo real.",
+  "settingsTitle": "⚙️ Configurações",
+  "settingsDesc": "Altere idiomas, alterne temas e atualize suas preferências.",
+  "footerText": "© 2025 Ashpay. Todos os direitos reservados.",
+  "home": "Inicio",
+  "admin": "Administrador",
+  "register": "Registrar",
+  "subscribe": "Assinar",
+  "payment": "Pagamento",
+  "balance": "Saldo",
+  "settings": "Configurações"
 }

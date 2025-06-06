@@ -2,5 +2,28 @@
   "settings": "Settings",
   "dark_mode": "Dark Mode",
   "language": "Language",
-  "logout": "Log Out"
+  "logout": "Log Out",
+  "welcomeTitle": "Welcome to AshPay",
+  "welcomeDescription": "Your virtual SIM-based M-Pesa service for foreigners visiting Kenya.",
+  "getStarted": "Get Started",
+  "registrationTitle": "🔐 Registration",
+  "registrationDesc": "Sign up using your passport and get access to M-Pesa services instantly.",
+  "subscriptionTitle": "💳 Subscription",
+  "subscriptionDesc": "Choose a plan suitable for tourists and business travelers.",
+  "sendReceiveTitle": "📩 Send & Receive",
+  "sendReceiveDesc": "Send and receive money across borders securely and quickly.",
+  "balanceTitle": "💰 Balance",
+  "balanceDesc": "Check your wallet balance anytime with real-time updates.",
+  "settingsTitle": "⚙️ Settings",
+  "settingsDesc": "Switch languages, toggle themes, and update your preferences.",
+  "footerText": "© 2025 Ashpay. All rights reserved.",
+  "home": "Home",
+  "admin": "Admin",
+  "register": "Register",
+  "subscribe": "Subscribe",
+  "payment": "Payment",
+  "balance": "Balance",
+  "settings": "Settings"
 }
+
+

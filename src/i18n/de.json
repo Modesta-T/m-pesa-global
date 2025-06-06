@@ -3,5 +3,27 @@
   "selectLanguage": "Sprache auswählen",
   "toggleTheme": "Design ändern",
   "switchToDark": "Zum Dunkelmodus wechseln",
-  "switchToLight": "Zum Hellmodus wechseln"
+  "switchToLight": "Zum Hellmodus wechseln",
+
+  "welcomeTitle": "Willkommen bei AshPay",
+  "welcomeDescription": "Ihr virtueller SIM-basierter M-Pesa-Dienst für Ausländer, die Kenia besuchen.",
+  "getStarted": "Loslegen",
+  "registrationTitle": "🔐 Registrierung",
+  "registrationDesc": "Melden Sie sich mit Ihrem Reisepass an und erhalten Sie sofort Zugang zu M-Pesa-Diensten.",
+  "subscriptionTitle": "💳 Abonnement",
+  "subscriptionDesc": "Wählen Sie einen Tarif, der für Touristen und Geschäftsreisende geeignet ist.",
+  "sendReceiveTitle": "📩 Senden & Empfangen",
+  "sendReceiveDesc": "Senden und empfangen Sie Geld sicher und schnell über Grenzen hinweg.",
+  "balanceTitle": "💰 Guthaben",
+  "balanceDesc": "Prüfen Sie jederzeit Ihren Wallet-Saldo mit Echtzeit-Updates.",
+  "settingsTitle": "⚙️ Einstellungen",
+  "settingsDesc": "Sprache wechseln, Thema umschalten und Ihre Einstellungen aktualisieren.",
+  "footerText": "© 2025 Ashpay. Alle Rechte vorbehalten.",
+  "home": "Startseite",
+  "admin": "Admin",
+  "register": "Registrieren",
+  "subscribe": "Abonnieren",
+  "payment": "Zahlung",
+  "balance": "Guthaben",
+  "settings": "Einstellungen"
 }

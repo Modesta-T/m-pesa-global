@@ -1,53 +1,50 @@
-// import React from 'react';
-// import Feature from '../components/Feature';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { LanguageContext } from "../LanguageContext";
 
-// function Home() {
-//   return (
-//     <section className="p-8 text-center">
-//       <h2 className="text-3xl font-bold mb-6">Interactive Feature Guide</h2>
+const Home = () => {
+  const { translations: t } = useContext(LanguageContext);
 
-//       <div className="max-w-3xl mx-auto text-left">
-//         <Feature
-//           title="Send and receive money via M-Pesa"
-//           steps={[
-//             "Open Global Pass app",
-//             "Select 'Send Money'",
-//             "Enter recipient's M-Pesa number and amount",
-//             "Confirm details and tap Send",
-//             "Receive confirmation instantly",
-//           ]}
-//         />
-//         <Feature
-//           title="Pay for goods and services"
-//           steps={[
-//             "Choose 'Pay Merchant' in app",
-//             "Enter Till Number from shop",
-//             "Confirm merchant name and amount",
-//             "Tap 'Pay Now' to complete",
-//             "Merchant receives instant confirmation",
-//           ]}
-//         />
-//         <Feature
-//           title="Make local calls and access data"
-//           steps={[
-//             "Choose 'Buy Airtime/Data' in app",
-//             "Select preferred package (Daily, Weekly, etc.)",
-//             "Confirm and activate",
-//             "Start making calls or browsing",
-//           ]}
-//         />
-//         <Feature
-//           title="Receive money from Kenyan contacts"
-//           steps={[
-//             "Share your Virtual M-Pesa number",
-//             "Contact sends money via standard M-Pesa",
-//             "Open app to confirm receipt",
-//             "Use or transfer funds as needed",
-//           ]}
-//         />
-//       </div>
-//     </section>
-//   );
-// }
+  return (
+    <section className="home-container">
+      <header className="hero-banner">
+        <h1>{t.welcomeTitle || "Welcome to AshPay"}</h1>
+        <p>{t.welcomeDescription || "Your virtual SIM-based M-Pesa service for foreigners visiting Kenya."}</p>
+        <Link to="/register" className="btn-primary">{t.getStarted || "Get Started"}</Link>
+      </header>
 
-// export default Home;
+      <section className="features-section">
+        <div className="feature-card">
+          <h3>{t.registrationTitle || "🔐 Registration"}</h3>
+          <p>{t.registrationDesc || "Sign up using your passport and get access to M-Pesa services instantly."}</p>
+        </div>
+
+        <div className="feature-card">
+          <h3>{t.subscriptionTitle || "💳 Subscription"}</h3>
+          <p>{t.subscriptionDesc || "Choose a plan suitable for tourists and business travelers."}</p>
+        </div>
+
+        <div className="feature-card">
+          <h3>{t.sendReceiveTitle || "📩 Send & Receive"}</h3>
+          <p>{t.sendReceiveDesc || "Send and receive money across borders securely and quickly."}</p>
+        </div>
+
+        <div className="feature-card">
+          <h3>{t.balanceTitle || "💰 Balance"}</h3>
+          <p>{t.balanceDesc || "Check your wallet balance anytime with real-time updates."}</p>
+        </div>
+
+        <div className="feature-card">
+          <h3>{t.settingsTitle || "⚙️ Settings"}</h3>
+          <p>{t.settingsDesc || "Switch languages, toggle themes, and update your preferences."}</p>
+        </div>
+      </section>
+
+      <footer className="footer-banner">
+        <p>{t.footerText || "© 2025 Ashpay. All rights reserved."}</p>
+      </footer>
+    </section>
+  );
+};
+
+export default Home;
